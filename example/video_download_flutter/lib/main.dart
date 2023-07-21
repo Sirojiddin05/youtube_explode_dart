@@ -1,9 +1,6 @@
 import 'dart:io';
 
-import 'package:downloads_path_provider/downloads_path_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path;
-import 'package:permission_handler/permission_handler.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 
 void main() {
@@ -64,8 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        content: Text(
-                            'Title: ${video.title}, Duration: ${video.duration}'),
+                        content: Text('Title: ${video.title}, Duration: ${video.duration}'),
                       );
                     },
                   );
@@ -80,8 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   // Build the directory.
                   var dir = await DownloadsPathProvider.downloadsDirectory;
-                  var filePath = path.join(dir.uri.toFilePath(),
-                      '${video.id}.${audio.container.name}');
+                  var filePath = path.join(dir.uri.toFilePath(), '${video.id}.${audio.container.name}');
 
                   // Open the file to write.
                   var file = File(filePath);
@@ -105,8 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        content:
-                            Text('Download completed and saved to: $filePath'),
+                        content: Text('Download completed and saved to: $filePath'),
                       );
                     },
                   );
